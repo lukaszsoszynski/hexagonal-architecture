@@ -1,0 +1,16 @@
+package com.impaqgroup.training.architecture.hexagonalarchitecture.service;
+
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
+
+import com.impaqgroup.training.architecture.hexagonalarchitecture.model.Post;
+import com.impaqgroup.training.spring.security.rest.dto.PostDto;
+
+@Component
+public class PostDtoConverter implements Converter<Post, PostDto> {
+
+    @Override
+    public PostDto convert(Post post) {
+        return new PostDto(post.getId(), post.getTitle(), post.getContent());
+    }
+}
