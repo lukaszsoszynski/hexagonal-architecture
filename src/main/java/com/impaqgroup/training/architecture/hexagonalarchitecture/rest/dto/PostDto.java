@@ -1,15 +1,16 @@
 package com.impaqgroup.training.architecture.hexagonalarchitecture.rest.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Value;
+import lombok.experimental.Wither;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Value
 public class PostDto {
 
-    private Long id;
+    @Wither
+    private Long postId;
+
+    @Wither
+    private String forumName;
 
     private String title;
 

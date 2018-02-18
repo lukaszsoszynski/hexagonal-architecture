@@ -11,6 +11,6 @@ public class PostDtoConverter implements Converter<Post, PostDto> {
 
     @Override
     public PostDto convert(Post post) {
-        return new PostDto(post.getId(), post.getTitle(), post.getContent());
+        return new PostDto(post.getId(), post.getForumName(), post.getTitle(), post.getContent());
     }
 }
