@@ -1,4 +1,4 @@
-package com.impaqgroup.training.spring.security.rest.dto;
+package com.impaqgroup.training.architecture.hexagonalarchitecture.rest.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -4,7 +4,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.Post;
-import com.impaqgroup.training.spring.security.rest.dto.PostDto;
+import com.impaqgroup.training.architecture.hexagonalarchitecture.rest.dto.PostDto;
 
 @Component
 public class DtoPostConverter implements Converter<PostDto, Post> {

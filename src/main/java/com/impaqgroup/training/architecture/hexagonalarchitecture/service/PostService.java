@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.Post;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.repository.PostRepository;
-import com.impaqgroup.training.spring.security.rest.dto.PostDto;
+import com.impaqgroup.training.architecture.hexagonalarchitecture.rest.dto.PostDto;
 
 @Service
 public class PostService {
@@ -29,7 +29,7 @@ public class PostService {
     public void create(PostDto postDto) {
         Post post = conversionService.convert(postDto, Post.class);
         post.setId(null);
-        post = postRepository.save(post);
+        postRepository.save(post);
     }
 
     @Transactional(readOnly = true)
