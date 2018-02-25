@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
 
-import com.impaqgroup.training.architecture.hexagonalarchitecture.repository.RepositoryConfiguration;
+import com.impaqgroup.training.architecture.hexagonalarchitecture.service.repository.RepositoryConfiguration;
 
 @SpringBootApplication(scanBasePackages = "com.impaqgroup.training.architecture.hexagonalarchitecture")
 @Import(RepositoryConfiguration.class)
