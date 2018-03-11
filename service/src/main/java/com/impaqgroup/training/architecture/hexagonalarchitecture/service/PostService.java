@@ -1,7 +1,6 @@
 package com.impaqgroup.training.architecture.hexagonalarchitecture.service;
 
-import static com.impaqgroup.training.architecture.hexagonalarchitecture.notification.ForumNotification.postAdded;
-import static com.impaqgroup.training.architecture.hexagonalarchitecture.notification.ForumNotification.postRemoved;
+import static com.impaqgroup.training.architecture.hexagonalarchitecture.notification.ForumNotification.*;
 
 import java.util.List;
 import java.util.Objects;
@@ -15,7 +14,6 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.Forum;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.Post;
-import com.impaqgroup.training.architecture.hexagonalarchitecture.notification.ForumNotification;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.notification.NotificationSender;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.repository.ForumDao;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.rest.RestPostService;
@@ -38,12 +36,7 @@ public class PostService implements RestPostService{
         Post post = conversionService.convert(postDto, Post.class);
         Forum forum = forumRepository.findForumByName(postDto.getForumName());
         forum.addPost(post);
-        TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronizationAdapter() {
-            @Override
-            public void afterCommit() {
-                notificationSender.sendNotification(postAdded(postDto.getForumName()));
-            }
-        });
+        onTransactionSuccessfullyCommitted(() -> notificationSender.sendNotification(postAdded(postDto.getForumName())));
     }
 
     @Transactional(readOnly = true)
@@ -60,13 +53,22 @@ public class PostService implements RestPostService{
     public void remove(String forumName, Long postId) {
         Forum forum = forumRepository.findForumByName(forumName);
         forum.remove(postId);
-        notificationSender.sendNotification(postRemoved(forumName));
+        onTransactionSuccessfullyCommitted(() -> notificationSender.sendNotification(postRemoved(forumName)));
     }
 
     @Transactional
     public void update(PostDto postDto) {
         Forum forum = forumRepository.findForumByName(Objects.requireNonNull(postDto.getForumName()));
         forum.updatePost(postDto.getPostId(), postDto.getTitle(), postDto.getContent());
-        notificationSender.sendNotification(ForumNotification.postUpdated(postDto.getForumName()));
+        onTransactionSuccessfullyCommitted(() -> notificationSender.sendNotification(postUpdated(postDto.getForumName())));
+    }
+
+    private void onTransactionSuccessfullyCommitted(Runnable runnableAfterTransactionCommitted) {
+        TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronizationAdapter() {
+            @Override
+            public void afterCommit() {
+                runnableAfterTransactionCommitted.run();
+            }
+        });
     }
 }
