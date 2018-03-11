@@ -1,9 +1,9 @@
-package com.impaqgroup.training.architecture.hexagonalarchitecture.repository;
+package com.impaqgroup.training.architecture.hexagonalarchitecture.repository.jpa;
 
 import org.springframework.stereotype.Repository;
 
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.Forum;
-import com.impaqgroup.training.architecture.hexagonalarchitecture.service.repository.ForumDao;
+import com.impaqgroup.training.architecture.hexagonalarchitecture.model.repository.ForumDao;
 
 import lombok.RequiredArgsConstructor;
 

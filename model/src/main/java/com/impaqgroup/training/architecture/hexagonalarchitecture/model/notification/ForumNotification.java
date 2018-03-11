@@ -1,6 +1,4 @@
-package com.impaqgroup.training.architecture.hexagonalarchitecture.service.notification;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+package com.impaqgroup.training.architecture.hexagonalarchitecture.model.notification;
 
 import lombok.*;
 
@@ -10,7 +8,6 @@ public class ForumNotification {
 
     private String forumName;
 
-    @JsonIgnore
     private ActionType type;
 
     public static ForumNotification postAdded(String forumName){

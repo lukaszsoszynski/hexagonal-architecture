@@ -1,12 +1,18 @@
 package com.impaqgroup.training.architecture.hexagonalarchitecture.install;
 
+import static org.springframework.context.annotation.FilterType.ANNOTATION;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.*;
 
-import com.impaqgroup.training.architecture.hexagonalarchitecture.repository.RepositoryConfiguration;
+import com.impaqgroup.training.architecture.hexagonalarchitecture.model.stereotype.OutputPort;
+import com.impaqgroup.training.architecture.hexagonalarchitecture.repository.jpa.RepositoryConfiguration;
 
-@SpringBootApplication(scanBasePackages = "com.impaqgroup.training.architecture.hexagonalarchitecture")
+@SpringBootApplication
+@ComponentScan(
+		basePackages = "com.impaqgroup.training.architecture.hexagonalarchitecture",
+		includeFilters = @ComponentScan.Filter(type = ANNOTATION, classes = OutputPort.class))
 @Import(RepositoryConfiguration.class)
 public class HexagonalArchitectureApplication {
 

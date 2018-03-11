@@ -1,11 +1,12 @@
 package com.impaqgroup.training.architecture.hexagonalarchitecture.model;
 
-import java.util.Objects;
+import static java.util.Objects.requireNonNull;
 
 import lombok.*;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
+@ToString(exclude = "forum")
 public class Post {
 
     public static final String POST_SEQUENCE_GENERATOR = "post_sequence_generator";
@@ -20,18 +21,19 @@ public class Post {
     @Setter(AccessLevel.PACKAGE)
     private Forum forum;
 
-    public Post(String title, String content){
-        this.title = Objects.requireNonNull(title);
-        this.content = Objects.requireNonNull(content);
+    public Post(Long id, String title, String content){
+        this.id = id;
+        this.title = requireNonNull(title);
+        this.content = requireNonNull(content);
     }
 
     public boolean hasId(Long postId){
         return id.equals(postId);
     }
 
-    public void update(String title, String content) {
-        this.title = Objects.requireNonNull(title);
-        this.content = Objects.requireNonNull(content);
+    public void update(Post post) {
+        this.title = requireNonNull(post.getTitle());
+        this.content = requireNonNull(post.getContent());
     }
 
     public String getForumName(){

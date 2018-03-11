@@ -26,11 +26,11 @@ public class Forum {
         posts.removeIf(post -> post.hasId(postId));
     }
 
-    public void updatePost(Long postId, String title, String content) {
+    public void updatePost(Post updatedPost) {
         posts
                 .stream()
-                .filter(post -> post.hasId(postId))
+                .filter(post -> post.hasId(updatedPost.getId()))
                 .findAny()
-                .ifPresent(post -> post.update(title, content));
+                .ifPresent(post -> post.update(updatedPost));
     }
 }

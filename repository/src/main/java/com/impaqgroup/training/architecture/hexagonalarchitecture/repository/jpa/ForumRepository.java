@@ -1,4 +1,4 @@
-package com.impaqgroup.training.architecture.hexagonalarchitecture.repository;
+package com.impaqgroup.training.architecture.hexagonalarchitecture.repository.jpa;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
