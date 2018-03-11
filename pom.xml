@@ -9,6 +9,8 @@
 	<modules>
 		<module>model</module>
 		<module>rest</module>
+		<module>repository</module>
+		<module>amqp</module>
 		<module>service</module>
 		<module>install</module>
 	</modules>
@@ -50,6 +52,16 @@
 			<dependency>
 				<groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
 				<artifactId>install</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.impaqgroup.training.architecture</groupId>
+				<artifactId>amqp</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.impaqgroup.training.architecture</groupId>
+				<artifactId>repository</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 		</dependencies>
