@@ -10,6 +10,8 @@ import java.util.stream.Collectors;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionSynchronizationAdapter;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.Forum;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.Post;
@@ -36,7 +38,12 @@ public class PostService implements RestPostService{
         Post post = conversionService.convert(postDto, Post.class);
         Forum forum = forumRepository.findForumByName(postDto.getForumName());
         forum.addPost(post);
-        notificationSender.sendNotification(postAdded(postDto.getForumName()));
+        TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronizationAdapter() {
+            @Override
+            public void afterCommit() {
+                notificationSender.sendNotification(postAdded(postDto.getForumName()));
+            }
+        });
     }
 
     @Transactional(readOnly = true)
