@@ -1,4 +1,4 @@
-package com.impaqgroup.training.architecture.hexagonalarchitecture.service.repository;
+package com.impaqgroup.training.architecture.hexagonalarchitecture.repository;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;

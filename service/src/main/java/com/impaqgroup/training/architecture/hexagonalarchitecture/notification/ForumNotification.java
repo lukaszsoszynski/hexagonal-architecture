@@ -1,4 +1,4 @@
-package com.impaqgroup.training.architecture.hexagonalarchitecture.service.notification;
+package com.impaqgroup.training.architecture.hexagonalarchitecture.notification;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -23,11 +23,6 @@ public class ForumNotification {
 
     public static ForumNotification postRemoved(String forumName){
         return create(forumName, ActionType.POST_REMOVED);
-    }
-
-    @JsonIgnore
-    String routing(){
-        return type.routingName();
     }
 
     private static ForumNotification create(String forumName, ActionType postRemoved) {
