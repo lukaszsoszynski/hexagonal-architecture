@@ -1,4 +1,4 @@
-package com.impaqgroup.training.architecture.hexagonalarchitecture.repository;
+package com.impaqgroup.training.architecture.hexagonalarchitecture.service.repository;
 
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.Forum;
 

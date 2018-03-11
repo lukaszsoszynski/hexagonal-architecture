@@ -1,4 +1,4 @@
-package com.impaqgroup.training.architecture.hexagonalarchitecture.notification;
+package com.impaqgroup.training.architecture.hexagonalarchitecture.service.notification;
 
 public interface NotificationSender {
 

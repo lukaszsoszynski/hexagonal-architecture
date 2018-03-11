@@ -4,13 +4,16 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
+import com.impaqgroup.training.architecture.hexagonalarchitecture.service.notification.ForumNotification;
+import com.impaqgroup.training.architecture.hexagonalarchitecture.service.notification.NotificationSender;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @RequiredArgsConstructor
 @Component
 @Slf4j
-class AmqpNotificationSender implements NotificationSender{
+class AmqpNotificationSender implements NotificationSender {
 
     private static final String FORUM_EXCHANGE = "forum";
     private final RabbitTemplate rabbitTemplate;

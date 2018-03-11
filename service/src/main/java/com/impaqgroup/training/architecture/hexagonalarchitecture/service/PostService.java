@@ -1,6 +1,6 @@
 package com.impaqgroup.training.architecture.hexagonalarchitecture.service;
 
-import static com.impaqgroup.training.architecture.hexagonalarchitecture.notification.ForumNotification.*;
+import static com.impaqgroup.training.architecture.hexagonalarchitecture.service.notification.ForumNotification.*;
 
 import java.util.List;
 import java.util.Objects;
@@ -14,8 +14,8 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.Forum;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.Post;
-import com.impaqgroup.training.architecture.hexagonalarchitecture.notification.NotificationSender;
-import com.impaqgroup.training.architecture.hexagonalarchitecture.repository.ForumDao;
+import com.impaqgroup.training.architecture.hexagonalarchitecture.service.notification.NotificationSender;
+import com.impaqgroup.training.architecture.hexagonalarchitecture.service.repository.ForumDao;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.rest.RestPostService;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.rest.dto.PostDto;
 

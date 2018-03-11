@@ -3,6 +3,7 @@ package com.impaqgroup.training.architecture.hexagonalarchitecture.repository;
 import org.springframework.stereotype.Repository;
 
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.Forum;
+import com.impaqgroup.training.architecture.hexagonalarchitecture.service.repository.ForumDao;
 
 import lombok.RequiredArgsConstructor;
 

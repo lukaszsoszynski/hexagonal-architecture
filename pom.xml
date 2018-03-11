@@ -9,9 +9,9 @@
 	<modules>
 		<module>model</module>
 		<module>rest</module>
+		<module>service</module>
 		<module>repository</module>
 		<module>amqp</module>
-		<module>service</module>
 		<module>install</module>
 	</modules>
 	<packaging>pom</packaging>
