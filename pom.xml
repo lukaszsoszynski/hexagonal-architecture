@@ -9,11 +9,12 @@
 	<modules>
 		<module>model</module>
 		<module>rest</module>
+		<module>soap</module>
 		<module>service</module>
 		<module>repository</module>
 		<module>amqp</module>
 		<module>install</module>
-	</modules>
+    </modules>
 	<packaging>pom</packaging>
 
 	<name>hexagonal-architecture</name>
@@ -42,6 +43,11 @@
 			<dependency>
 				<groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
 				<artifactId>rest</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.impaqgroup.training.architecture</groupId>
+				<artifactId>soap</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>

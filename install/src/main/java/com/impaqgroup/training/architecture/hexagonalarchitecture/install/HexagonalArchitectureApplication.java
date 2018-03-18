@@ -16,7 +16,7 @@ import com.impaqgroup.training.architecture.hexagonalarchitecture.repository.jpa
 @Import(RepositoryConfiguration.class)
 public class HexagonalArchitectureApplication {
 
-	//on java 9 run with option --add-modules java.xml.bind
+	//on java 9 run with option --add-modules java.xml.bind,java.xml.ws
 	public static void main(String[] args) {
 		SpringApplication.run(HexagonalArchitectureApplication.class, args);
 	}
