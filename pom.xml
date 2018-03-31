@@ -9,6 +9,7 @@
 	<modules>
 		<module>modelcore</module>
 		<module>model</module>
+		<module>restcore</module>
 		<module>rest</module>
 		<module>soap</module>
 		<module>service</module>
@@ -44,6 +45,11 @@
 			<dependency>
 				<groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
 				<artifactId>model-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
+				<artifactId>rest-core</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
