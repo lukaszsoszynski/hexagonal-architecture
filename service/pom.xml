@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
-            <artifactId>model</artifactId>
+            <artifactId>model-core</artifactId>
         </dependency>
         <dependency>
             <groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
