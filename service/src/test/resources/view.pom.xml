@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <groupId>com.impaqgroup</groupId>
+    <artifactId>View</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>com.impaqgroup</groupId>
+            <artifactId>Logic</artifactId>
+        </dependency>
+    </dependencies>
+</project>

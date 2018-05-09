@@ -4,7 +4,8 @@ import static org.springframework.context.annotation.FilterType.ANNOTATION;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Import;
 
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.stereotype.OutputPort;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.repository.jpa.RepositoryConfiguration;
@@ -20,4 +21,5 @@ public class HexagonalArchitectureApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(HexagonalArchitectureApplication.class, args);
 	}
+
 }

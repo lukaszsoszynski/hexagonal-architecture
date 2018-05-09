@@ -11,12 +11,13 @@
 		<module>model</module>
 		<module>restcore</module>
 		<module>rest</module>
+        <module>soapcore</module>
 		<module>soap</module>
 		<module>service</module>
 		<module>repository</module>
 		<module>amqp</module>
 		<module>install</module>
-    </modules>
+	</modules>
 	<packaging>pom</packaging>
 
 	<name>hexagonal-architecture</name>
@@ -58,13 +59,18 @@
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.impaqgroup.training.architecture</groupId>
-				<artifactId>soap</artifactId>
+				<groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
+				<artifactId>service</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
-				<artifactId>service</artifactId>
+				<artifactId>soap-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
+				<artifactId>soap</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>

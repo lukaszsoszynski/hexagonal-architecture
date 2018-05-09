@@ -18,6 +18,10 @@
             <artifactId>rest</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
+            <artifactId>soap</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.impaqgroup.training.architecture</groupId>
             <artifactId>repository</artifactId>
         </dependency>

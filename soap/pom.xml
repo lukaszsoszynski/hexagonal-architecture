@@ -9,11 +9,15 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.impaqgroup.training.architecture</groupId>
+    <groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
     <artifactId>soap</artifactId>
 
 
     <dependencies>
+        <dependency>
+            <groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
+            <artifactId>soap-core</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web-services</artifactId>
@@ -23,36 +27,4 @@
             <artifactId>wsdl4j</artifactId>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jaxb2-maven-plugin</artifactId>
-                <version>1.6</version>
-                <executions>
-                    <execution>
-                        <id>xjc</id>
-                        <goals>
-                            <goal>xjc</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <schemaDirectory>${project.basedir}/src/main/resources/schema/</schemaDirectory>
-                    <outputDirectory>${project.basedir}/target/generated-sources/jaxb/</outputDirectory>
-                    <clearOutputDir>true</clearOutputDir>
-                </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <compilerArgs>
-                        <arg>--add-modules</arg>
-                        <arg>java.xml.bind</arg>
-                    </compilerArgs>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>
