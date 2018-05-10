@@ -19,6 +19,10 @@
         </dependency>
         <dependency>
             <groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
+            <artifactId>soap-primary-adapter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
             <artifactId>amqp-secondary-adapter</artifactId>
         </dependency>
         <dependency>
