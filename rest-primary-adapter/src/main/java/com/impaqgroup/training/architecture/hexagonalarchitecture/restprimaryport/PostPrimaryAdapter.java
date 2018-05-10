@@ -1,4 +1,4 @@
-package com.impaqgroup.training.architecture.hexagonalarchitecture.service;
+package com.impaqgroup.training.architecture.hexagonalarchitecture.restprimaryport;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class PostApplicationService implements RestPostService{
+public class PostPrimaryAdapter implements RestPostService{
 
     private final PostService postService;
 
