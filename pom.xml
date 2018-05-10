@@ -11,12 +11,13 @@
 		<module>rest</module>
 		<module>rest-primary-adapter</module>
 		<module>soap</module>
+		<module>soap-primary-adapter</module>
 		<module>repository</module>
-        <module>repository-secondary-adapter</module>
+		<module>repository-secondary-adapter</module>
 		<module>amqp</module>
 		<module>amqp-secondary-adapter</module>
 		<module>install</module>
-    </modules>
+	</modules>
 	<packaging>pom</packaging>
 
 	<name>hexagonal-architecture</name>
@@ -55,6 +56,11 @@
 			<dependency>
 				<groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
 				<artifactId>soap</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
+				<artifactId>soap-primary-adapter</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
@@ -107,20 +113,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<compilerArgs>
-						<arg>--add-modules</arg>
-						<arg>java.xml.bind</arg>
-					</compilerArgs>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 
 	<repositories>
 		<repository>
