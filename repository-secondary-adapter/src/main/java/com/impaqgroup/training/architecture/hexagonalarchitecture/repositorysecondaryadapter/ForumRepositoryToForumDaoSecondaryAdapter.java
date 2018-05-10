@@ -1,15 +1,16 @@
-package com.impaqgroup.training.architecture.hexagonalarchitecture.repository.jpa;
+package com.impaqgroup.training.architecture.hexagonalarchitecture.repositorysecondaryadapter;
 
 import org.springframework.stereotype.Repository;
 
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.Forum;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.repository.ForumDao;
+import com.impaqgroup.training.architecture.hexagonalarchitecture.repository.jpa.ForumRepository;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Repository
-class SpringRepositoryImpl implements ForumDao {
+class ForumRepositoryToForumDaoSecondaryAdapter implements ForumDao {
 
     private final ForumRepository repository;
 
