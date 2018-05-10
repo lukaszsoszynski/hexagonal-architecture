@@ -14,16 +14,16 @@
     <artifactId>install</artifactId>
     <dependencies>
         <dependency>
-            <groupId>com.impaqgroup.training.architecture</groupId>
-            <artifactId>repository</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.impaqgroup.training.architecture</groupId>
-            <artifactId>amqp</artifactId>
+            <groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
+            <artifactId>rest-primary-adapter</artifactId>
         </dependency>
         <dependency>
             <groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
-            <artifactId>service</artifactId>
+            <artifactId>amqp-secondary-adapter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
+            <artifactId>repository-secondary-adapter</artifactId>
         </dependency>
     </dependencies>
 

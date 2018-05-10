@@ -11,9 +11,11 @@
 		<module>rest</module>
 		<module>rest-primary-adapter</module>
 		<module>repository</module>
+        <module>repository-secondary-adapter</module>
 		<module>amqp</module>
+		<module>amqp-secondary-adapter</module>
 		<module>install</module>
-	</modules>
+    </modules>
 	<packaging>pom</packaging>
 
 	<name>hexagonal-architecture</name>
@@ -41,12 +43,22 @@
 			</dependency>
 			<dependency>
 				<groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
+				<artifactId>rest-primary-adapter</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
 				<artifactId>rest</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
-				<artifactId>service</artifactId>
+				<artifactId>repository</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
+				<artifactId>repository-secondary-adapter</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
@@ -55,12 +67,17 @@
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.impaqgroup.training.architecture</groupId>
+				<groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
 				<artifactId>amqp</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.impaqgroup.training.architecture</groupId>
+				<groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
+				<artifactId>amqp-secondary-adapter</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
 				<artifactId>repository</artifactId>
 				<version>${project.version}</version>
 			</dependency>

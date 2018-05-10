@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.impaqgroup.training.architecture</groupId>
+    <groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
     <artifactId>amqp</artifactId>
 
     <dependencies>

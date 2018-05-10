@@ -3,14 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>hexagonal-architecture</artifactId>
         <groupId>com.impaqgroup.training.architecture</groupId>
+        <artifactId>hexagonal-architecture</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
-    <artifactId>service</artifactId>
+    <artifactId>rest-primary-adapter</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
