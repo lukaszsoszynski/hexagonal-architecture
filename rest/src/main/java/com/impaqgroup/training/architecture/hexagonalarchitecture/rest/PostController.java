@@ -1,16 +1,17 @@
 package com.impaqgroup.training.architecture.hexagonalarchitecture.rest;
 
-import static java.util.Objects.requireNonNull;
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-
-import java.util.List;
-
+import com.impaqgroup.training.architecture.hexagonalarchitecture.rest.dto.PostDto;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import com.impaqgroup.training.architecture.hexagonalarchitecture.rest.dto.PostDto;
+import java.util.List;
 
+import static java.util.Objects.requireNonNull;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
+@Slf4j
 @RestController
 public class PostController {
 
@@ -18,6 +19,7 @@ public class PostController {
 
     @Autowired
     public PostController(RestPostService restPostService) {
+        log.info("PostController created");
         this.restPostService = restPostService;
     }
 

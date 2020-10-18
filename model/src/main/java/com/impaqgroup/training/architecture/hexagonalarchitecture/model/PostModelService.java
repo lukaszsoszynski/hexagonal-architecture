@@ -1,19 +1,18 @@
 package com.impaqgroup.training.architecture.hexagonalarchitecture.model;
 
-import static com.impaqgroup.training.architecture.hexagonalarchitecture.model.notification.ForumNotification.*;
-import static java.util.Objects.requireNonNull;
-
-import java.util.List;
-
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.notification.NotificationSender;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.repository.ForumDao;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.stereotype.OutputPort;
-
 import lombok.RequiredArgsConstructor;
+
+import java.util.List;
+
+import static com.impaqgroup.training.architecture.hexagonalarchitecture.model.notification.ForumNotification.*;
+import static java.util.Objects.requireNonNull;
 
 @RequiredArgsConstructor
 @OutputPort
-class PostModelService implements PostService {
+public class PostModelService implements PostService {
 
     private final ForumDao forumRepository;
 
