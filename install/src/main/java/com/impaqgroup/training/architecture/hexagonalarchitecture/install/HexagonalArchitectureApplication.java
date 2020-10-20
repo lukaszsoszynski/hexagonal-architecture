@@ -22,11 +22,6 @@ import static org.springframework.context.annotation.FilterType.ANNOTATION;
 @Import(RepositoryConfiguration.class)
 public class HexagonalArchitectureApplication {
 
-//	@Bean
-//	PostService postService(ForumDao forumRepository, NotificationSender notificationSender){
-//		return new PostModelService(forumRepository, notificationSender);
-//	}
-
 	public static void main(String[] args) {
 		SpringApplication.run(HexagonalArchitectureApplication.class, args);
 	}
