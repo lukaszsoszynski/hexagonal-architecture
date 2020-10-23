@@ -5,7 +5,6 @@ import com.impaqgroup.training.architecture.hexagonalarchitecture.model.reposito
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.stereotype.OutputPort;
 import lombok.RequiredArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.impaqgroup.training.architecture.hexagonalarchitecture.model.notification.ForumNotification.*;
@@ -13,38 +12,51 @@ import static java.util.Objects.requireNonNull;
 
 @RequiredArgsConstructor
 @OutputPort
-public class PostModelService implements PostService {
+public class ForumModelService implements ForumService {
 
     private final ForumDao forumRepository;
 
     private final NotificationSender notificationSender;
 
+
     @Override
-    public void create(String forumName, Post post) {
+    public void commenceThread(String forumName, String threadName, Post post) {
         Forum forum = forumRepository.findForumByName(forumName);
-        forum.addPost(post);
+        forum.addThread(threadName, post);
         notificationSender.sendNotification(postAdded(forumName));
     }
 
     @Override
-    public List<Post> findAll(String forum) {
-//        return forumRepository
-//                .findForumByName(forum)
-//                .getPosts();
-        return new ArrayList<>();
+    public List<Thread> listThreadsInForum(String forumName) {
+        Forum forum = forumRepository.findForumByName(forumName);
+        return forum.getThreads();
     }
 
     @Override
-    public void remove(String forumName, Long postId) {
+    public void create(String forumName, Long threadId, Post post) {
         Forum forum = forumRepository.findForumByName(forumName);
-        forum.remove(postId);
+        forum.appendPostToThread(threadId, post);
+        notificationSender.sendNotification(postAdded(forumName));
+    }
+
+    @Override
+    public List<Post> findAll(String forum, Long threadId) {
+        return forumRepository
+                .findForumByName(forum)
+                .getPostsFromThread(threadId);
+    }
+
+    @Override
+    public void remove(String forumName, Long threadId, Long postId) {
+        Forum forum = forumRepository.findForumByName(forumName);
+        forum.remove(threadId, postId);
         notificationSender.sendNotification(postRemoved(forumName));
     }
 
     @Override
-    public void update(String forumName, Post post) {
+    public void update(String forumName, Long threadId, Post post) {
         Forum forum = forumRepository.findForumByName(requireNonNull(forumName));
-        forum.updatePost(post);
+        forum.updatePost(threadId, post);
         notificationSender.sendNotification(postUpdated(forumName));
     }
 

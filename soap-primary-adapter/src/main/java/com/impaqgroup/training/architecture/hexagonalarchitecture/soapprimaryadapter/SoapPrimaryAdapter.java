@@ -1,22 +1,20 @@
 package com.impaqgroup.training.architecture.hexagonalarchitecture.soapprimaryadapter;
-import java.util.List;
-import java.util.stream.Collectors;
-
+import com.impaqgroup.training.architecture.hexagonalarchitecture.model.ForumService;
+import com.impaqgroup.training.architecture.hexagonalarchitecture.model.Post;
+import com.impaqgroup.training.architecture.hexagonalarchitecture.soap.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.impaqgroup.training.architecture.hexagonalarchitecture.model.Post;
-import com.impaqgroup.training.architecture.hexagonalarchitecture.model.PostService;
-import com.impaqgroup.training.architecture.hexagonalarchitecture.soap.*;
-
-import lombok.RequiredArgsConstructor;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
 class SoapPrimaryAdapter implements SoapForumService {
 
-    private final PostService postService;
+    private final ForumService forumService;
 
     private final ConversionService conversionService;
 
@@ -30,24 +28,24 @@ class SoapPrimaryAdapter implements SoapForumService {
     @Override
     @Transactional
     public void createPost(PostType postType) {
-        postService.create(postType.getForumName(), conversionService.convert(postType, Post.class));
+        forumService.create(postType.getForumName(), null, conversionService.convert(postType, Post.class));
     }
 
     @Override
     @Transactional
     public void removePost(RemovePostRequest removePostRequest) {
-        postService.remove(removePostRequest.getForumName(), removePostRequest.getPostId());
+        forumService.remove(removePostRequest.getForumName(), null, removePostRequest.getPostId());
     }
 
     @Override
     @Transactional
     public void updatePost(PersistentPostType persistentPostType) {
-        postService.update(persistentPostType.getForumName(), conversionService.convert(persistentPostType, Post.class));
+        forumService.update(persistentPostType.getForumName(), null, conversionService.convert(persistentPostType, Post.class));
     }
 
     private List<PersistentPostType> findAllPost(String forumName) {
-        return postService
-                .findAll(forumName)
+        return forumService
+                .findAll(forumName, null)
                 .stream()
                 .map(post -> conversionService.convert(post, PersistentPostType.class))
                 .collect(Collectors.toList());

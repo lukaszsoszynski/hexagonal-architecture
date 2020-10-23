@@ -36,6 +36,10 @@ public class Post {
         this.content = requireNonNull(post.getContent());
     }
 
+    public boolean containSameId(Long postId){
+        return (id != null) && id.equals(requireNonNull(postId, "Post id is null."));
+    }
+
 //    public String getForumName(){
 //        return forum.getName();
 //    }

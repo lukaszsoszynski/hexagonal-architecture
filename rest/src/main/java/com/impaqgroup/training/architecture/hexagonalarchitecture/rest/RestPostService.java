@@ -1,16 +1,16 @@
 package com.impaqgroup.training.architecture.hexagonalarchitecture.rest;
 
-import java.util.List;
-
 import com.impaqgroup.training.architecture.hexagonalarchitecture.rest.dto.PostDto;
+
+import java.util.List;
 
 public interface RestPostService {
 
-    List<PostDto> findAll(String forum);
+    List<PostDto> listPostInForumAndThread(String forum, Long threadId);
 
-    void create(PostDto postDto);
+    void create(String forum, Long threadId, PostDto postDto);
 
-    void remove(String forum, Long postId);
+    void remove(String forum, Long threadId, Long postId);
 
-    void update(PostDto postDto);
+    void update(String forum, Long threadId, PostDto postDto);
 }
