@@ -16,7 +16,7 @@ class PostToPersistentPostTypeConverter implements Converter<Post, PersistentPos
     public PersistentPostType convert(Post post) {
         PersistentPostType persistentPostType = new PersistentPostType();
         persistentPostType.setContent(post.getContent());
-        persistentPostType.setForumName(post.getForumName());
+//        persistentPostType.setForumName(post.getForumName());
         persistentPostType.setTitle(post.getTitle());
         persistentPostType.setPostId(post.getId());
         return persistentPostType;

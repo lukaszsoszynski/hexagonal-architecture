@@ -9,7 +9,25 @@
             <id name="name">
                 <column name="name" />
             </id>
-            <one-to-many name="posts" mapped-by="forum" orphan-removal="true">
+            <one-to-many name="threads" mapped-by="forum" orphan-removal="true">
+                <cascade>
+                    <cascade-all/>
+                </cascade>
+            </one-to-many>
+        </attributes>
+    </entity>
+    <entity class="com.impaqgroup.training.architecture.hexagonalarchitecture.model.Thread" access="FIELD">
+        <table name="thread"/>
+        <attributes>
+            <id name="id">
+                <column name="id" />
+                <generated-value generator="thread_sequence_generator" strategy="SEQUENCE"/>
+                <sequence-generator name="thread_sequence_generator" sequence-name="seq_thread" allocation-size="1" initial-value="1000" />
+            </id>
+            <many-to-one name="forum">
+                <join-column name="forum_name" updatable="false" />
+            </many-to-one>
+            <one-to-many name="posts" mapped-by="thread" orphan-removal="true">
                 <cascade>
                     <cascade-all/>
                 </cascade>
@@ -24,8 +42,8 @@
                 <generated-value generator="post_sequence_generator" strategy="SEQUENCE"/>
                 <sequence-generator name="post_sequence_generator" sequence-name="seq_post" allocation-size="1" initial-value="1000" />
             </id>
-            <many-to-one name="forum">
-                <join-column name="forum_name" updatable="false" />
+            <many-to-one name="thread">
+                <join-column name="thread_id" updatable="false" />
             </many-to-one>
         </attributes>
     </entity>

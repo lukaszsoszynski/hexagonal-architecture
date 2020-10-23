@@ -5,6 +5,7 @@ import com.impaqgroup.training.architecture.hexagonalarchitecture.model.reposito
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.stereotype.OutputPort;
 import lombok.RequiredArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.impaqgroup.training.architecture.hexagonalarchitecture.model.notification.ForumNotification.*;
@@ -27,9 +28,10 @@ public class PostModelService implements PostService {
 
     @Override
     public List<Post> findAll(String forum) {
-        return forumRepository
-                .findForumByName(forum)
-                .getPosts();
+//        return forumRepository
+//                .findForumByName(forum)
+//                .getPosts();
+        return new ArrayList<>();
     }
 
     @Override

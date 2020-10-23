@@ -1,10 +1,10 @@
 package com.impaqgroup.training.architecture.hexagonalarchitecture.model;
 
-import static java.util.Objects.requireNonNull;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
-
-import lombok.*;
 
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 public class Forum {
@@ -15,22 +15,22 @@ public class Forum {
     private String title;
 
     @Getter
-    private List<Post> posts;
+    private List<Thread> threads;
 
     public void addPost(Post post) {
-        requireNonNull(post).setForum(this);
-        posts.add(post);
+//        requireNonNull(post).setForum(this);
+//        posts.add(post);
     }
 
     public void remove(Long postId) {
-        posts.removeIf(post -> post.hasId(postId));
+//        posts.removeIf(post -> post.hasId(postId));
     }
 
     public void updatePost(Post updatedPost) {
-        posts
-                .stream()
-                .filter(post -> post.hasId(updatedPost.getId()))
-                .findAny()
-                .ifPresent(post -> post.update(updatedPost));
+//        posts
+//                .stream()
+//                .filter(post -> post.hasId(updatedPost.getId()))
+//                .findAny()
+//                .ifPresent(post -> post.update(updatedPost));
     }
 }

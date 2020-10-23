@@ -13,7 +13,7 @@ class PostToPostTypeConverter implements Converter<Post, PostType>{
     public PostType convert(Post post) {
         PostType postType = new PostType();
         postType.setContent(post.getContent());
-        postType.setForumName(post.getForumName());
+//        postType.setForumName(post.getForumName());
         postType.setTitle(post.getTitle());
         return postType;
     }
