@@ -1,6 +1,6 @@
 package com.impaqgroup.training.architecture.hexagonalarchitecture.soap;
 
-public interface SoapForumService {
+public interface SoapPostService {
 
     GetAllPostResponse getAllPost(GetAllPostRequest getAllPostRequest);
 

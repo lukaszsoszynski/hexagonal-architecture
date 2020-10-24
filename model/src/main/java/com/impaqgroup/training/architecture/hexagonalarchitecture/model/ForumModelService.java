@@ -42,8 +42,8 @@ public class ForumModelService implements ForumService {
     @Override
     public List<Post> findAll(String forum, Long threadId) {
         return forumRepository
-                .findForumByName(forum)
-                .getPostsFromThread(threadId);
+                .findForumByName(requireNonNull(forum, "Forum name is mandatory"))
+                .getPostsFromThread(requireNonNull(threadId, "Thread id is mandatory"));
     }
 
     @Override

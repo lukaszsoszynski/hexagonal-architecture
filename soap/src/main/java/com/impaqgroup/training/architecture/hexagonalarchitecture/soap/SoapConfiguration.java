@@ -17,6 +17,8 @@ import org.springframework.xml.xsd.XsdSchema;
 @Configuration
 public class SoapConfiguration extends WsConfigurerAdapter {
 
+    static final String NAMESPACE_URI = "http://impaqgroup.com/training/architecture/hexagonalarchitecture/soap";
+
     @Bean
     public ServletRegistrationBean messageDispatcherServlet(ApplicationContext applicationContext) {
         MessageDispatcherServlet servlet = new MessageDispatcherServlet();

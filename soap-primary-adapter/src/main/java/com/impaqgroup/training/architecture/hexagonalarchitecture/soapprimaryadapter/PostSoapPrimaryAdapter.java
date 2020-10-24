@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
-class SoapPrimaryAdapter implements SoapForumService {
+class PostSoapPrimaryAdapter implements SoapPostService {
 
     private final ForumService forumService;
 
@@ -21,31 +21,31 @@ class SoapPrimaryAdapter implements SoapForumService {
     @Override
     @Transactional(readOnly = true)
     public GetAllPostResponse getAllPost(GetAllPostRequest request) {
-        List<PersistentPostType> listOfPosts = findAllPost(request.getForumName());
+        List<PersistentPostType> listOfPosts = findAllPost(request.getForumName(), request.getThreadId());
         return createGetAllPostResponse(listOfPosts);
     }
 
     @Override
     @Transactional
     public void createPost(PostType postType) {
-        forumService.create(postType.getForumName(), null, conversionService.convert(postType, Post.class));
+        forumService.create(postType.getForumName(), postType.getThreadId(), conversionService.convert(postType, Post.class));
     }
 
     @Override
     @Transactional
     public void removePost(RemovePostRequest removePostRequest) {
-        forumService.remove(removePostRequest.getForumName(), null, removePostRequest.getPostId());
+        forumService.remove(removePostRequest.getForumName(), removePostRequest.getThreadId(), removePostRequest.getPostId());
     }
 
     @Override
     @Transactional
     public void updatePost(PersistentPostType persistentPostType) {
-        forumService.update(persistentPostType.getForumName(), null, conversionService.convert(persistentPostType, Post.class));
+        forumService.update(persistentPostType.getForumName(), persistentPostType.getThreadId(), conversionService.convert(persistentPostType, Post.class));
     }
 
-    private List<PersistentPostType> findAllPost(String forumName) {
+    private List<PersistentPostType> findAllPost(String forumName, Long threadId) {
         return forumService
-                .findAll(forumName, null)
+                .findAll(forumName, threadId)
                 .stream()
                 .map(post -> conversionService.convert(post, PersistentPostType.class))
                 .collect(Collectors.toList());

@@ -7,6 +7,7 @@
             <xs:element type="xs:string" name="content" />
         </xs:choice>
         <xs:attribute type="xs:string" name="forumName"/>
+        <xs:attribute type="xs:long" name="threadId"/>
     </xs:complexType>
     <xs:complexType name="PersistentPostType">
         <xs:complexContent>
@@ -17,10 +18,17 @@
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
+    <xs:complexType name="Thread">
+        <xs:sequence>
+            <xs:element name="threadId" type="xs:long" />
+            <xs:element name="name" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
 
     <xs:element name="getAllPostRequest">
         <xs:complexType>
             <xs:attribute name="forumName" type="xs:string" />
+            <xs:attribute name="threadId" type="xs:long" />
         </xs:complexType>
     </xs:element>
 
@@ -37,9 +45,32 @@
     <xs:element name="removePostRequest">
         <xs:complexType>
             <xs:attribute name="forumName" type="xs:string"/>
+            <xs:attribute name="threadId" type="xs:long" />
             <xs:attribute name="postId" type="xs:long" />
         </xs:complexType>
     </xs:element>
 
     <xs:element name="updatePostRequest" type="tns:PersistentPostType"/>
+
+    <xs:element name="commenceNewThread">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element name="threadName" type="xs:string"/>
+                <xs:element name="post" type="tns:postType" />
+            </xs:choice>
+            <xs:attribute name="forumName" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="listAllThreads">
+        <xs:complexType>
+            <xs:attribute name="forumName" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="listAllThreadsResponse">
+        <xs:complexType>
+            <xs:sequence maxOccurs="unbounded">
+                <xs:element name="thread" type="tns:Thread" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>
