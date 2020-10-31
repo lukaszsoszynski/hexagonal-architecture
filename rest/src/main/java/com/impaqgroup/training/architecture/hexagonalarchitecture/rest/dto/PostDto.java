@@ -12,4 +12,8 @@ public class PostDto {
     private String title;
 
     private String content;
+
+    public boolean isUserIdPresent(){
+        return postId != null;
+    }
 }

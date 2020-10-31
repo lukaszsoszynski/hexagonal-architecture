@@ -32,6 +32,9 @@
                     <cascade-all/>
                 </cascade>
             </one-to-many>
+            <many-to-one name="creator">
+                <join-column name="creator" updatable="false"/>
+            </many-to-one>
         </attributes>
     </entity>
     <entity class="com.impaqgroup.training.architecture.hexagonalarchitecture.model.Post" access="FIELD">
@@ -45,6 +48,25 @@
             <many-to-one name="thread">
                 <join-column name="thread_id" updatable="false" />
             </many-to-one>
+            <many-to-one name="author">
+                <join-column name="author" updatable="false" />
+            </many-to-one>
+        </attributes>
+    </entity>
+    <entity class="com.impaqgroup.training.architecture.hexagonalarchitecture.model.User" access="FIELD">
+        <table name="user"/>
+        <attributes>
+            <id name="email"/>
+            <one-to-many name="authorOfPosts" mapped-by="author" orphan-removal="true">
+                <cascade>
+                    <cascade-all/>
+                </cascade>
+            </one-to-many>
+            <one-to-many name="createdThreads" mapped-by="creator" orphan-removal="true">
+                <cascade>
+                    <cascade-all/>
+                </cascade>
+            </one-to-many>
         </attributes>
     </entity>
 </entity-mappings>

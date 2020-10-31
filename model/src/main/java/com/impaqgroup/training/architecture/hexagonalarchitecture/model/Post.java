@@ -21,13 +21,30 @@ public class Post {
     @Setter(AccessLevel.PACKAGE)
     private Thread thread;
 
-    public Post(Long id, String title, String content){
-        this.id = id;
-        this.title = requireNonNull(title);
-        this.content = requireNonNull(content);
+    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.PACKAGE)
+    private User author;
+
+    public static Post reconstructExistingPost(Long id, String title, String content) {
+        return new Post(requireNonNull(id, "Id is required for post reconstruction"),
+                title,
+                content,
+                null);
     }
 
-    public boolean hasId(Long postId){
+    public static Post createNewPost(String title, String content, User author) {
+        return new Post(null, title, content, author);
+    }
+
+
+    private Post(Long id, String title, String content, User user) {
+        this.id = id;
+        this.title = requireNonNull(title, "Title for post is required.");
+        this.content = requireNonNull(content, "Content for post is required.");
+        this.author = user;
+    }
+
+    public boolean hasId(Long postId) {
         return id.equals(postId);
     }
 
@@ -36,7 +53,7 @@ public class Post {
         this.content = requireNonNull(post.getContent());
     }
 
-    public boolean containSameId(Long postId){
+    public boolean containSameId(Long postId) {
         return (id != null) && id.equals(requireNonNull(postId, "Post id is null."));
     }
 

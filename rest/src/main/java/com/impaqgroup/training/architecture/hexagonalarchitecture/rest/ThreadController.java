@@ -14,7 +14,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-public class ThreadController {
+class ThreadController {
 
     private final RestThreadService restThreadService;
 

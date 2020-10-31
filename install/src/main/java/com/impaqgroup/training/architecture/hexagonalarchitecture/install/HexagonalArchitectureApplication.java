@@ -1,5 +1,6 @@
 package com.impaqgroup.training.architecture.hexagonalarchitecture.install;
 
+import com.impaqgroup.training.architecture.hexagonalarchitecture.install.security.SecurityConfig;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.stereotype.OutputPort;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.repository.jpa.RepositoryConfiguration;
 import org.springframework.boot.SpringApplication;
@@ -19,11 +20,10 @@ import static org.springframework.context.annotation.FilterType.ANNOTATION;
 				@Filter(type = ANNOTATION, classes = Component.class),
 				@Filter(type = ANNOTATION, classes = OutputPort.class)
 		})
-@Import(RepositoryConfiguration.class)
+@Import({RepositoryConfiguration.class, SecurityConfig.class})
 public class HexagonalArchitectureApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(HexagonalArchitectureApplication.class, args);
 	}
-
 }

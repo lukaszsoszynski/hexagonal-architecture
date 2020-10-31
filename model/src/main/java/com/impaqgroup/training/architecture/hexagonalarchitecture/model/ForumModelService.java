@@ -2,12 +2,14 @@ package com.impaqgroup.training.architecture.hexagonalarchitecture.model;
 
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.notification.NotificationSender;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.repository.ForumDao;
+import com.impaqgroup.training.architecture.hexagonalarchitecture.model.repository.UserDao;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.stereotype.OutputPort;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
 import static com.impaqgroup.training.architecture.hexagonalarchitecture.model.notification.ForumNotification.*;
+import static java.lang.String.format;
 import static java.util.Objects.requireNonNull;
 
 @RequiredArgsConstructor
@@ -16,13 +18,17 @@ public class ForumModelService implements ForumService {
 
     private final ForumDao forumRepository;
 
+    private final UserDao userDao;
+
     private final NotificationSender notificationSender;
+
+    private final CurrentUserFactor currentUserFactor;
 
 
     @Override
     public void commenceThread(String forumName, String threadName, Post post) {
         Forum forum = forumRepository.findForumByName(forumName);
-        forum.addThread(threadName, post);
+        forum.addThread(threadName, post, currentUserFactor.getLoggedUser());
         notificationSender.sendNotification(postAdded(forumName));
     }
 
@@ -58,6 +64,17 @@ public class ForumModelService implements ForumService {
         Forum forum = forumRepository.findForumByName(requireNonNull(forumName));
         forum.updatePost(threadId, post);
         notificationSender.sendNotification(postUpdated(forumName));
+    }
+
+    @Override
+    public void registerUser(User user) {
+        String email = user.getEmail();
+        userDao.findByEmail(email).ifPresent(this::throwUserAlreadyExists);
+        userDao.create(user);
+    }
+
+    private void throwUserAlreadyExists(User user){
+        throw new ForumException(format("User with email '%s' already exists", user.getEmail()));
     }
 
 }

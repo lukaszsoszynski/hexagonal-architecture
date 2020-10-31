@@ -19,8 +19,8 @@ public class Forum {
     @Getter
     private List<Thread> threads;
 
-    public void addThread(String threadName, Post post) {
-        threads.add(new Thread(threadName, this, post));
+    public void addThread(String threadName, Post post, User user) {
+        threads.add(new Thread(threadName, this, post, user));
     }
 
     public void remove(Long threadId, Long postId) {

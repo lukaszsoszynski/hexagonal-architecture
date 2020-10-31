@@ -22,12 +22,17 @@ public class Thread {
     @Setter(AccessLevel.PACKAGE)
     private Forum forum;
 
+    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.PACKAGE)
+    private User creator;
+
     @Getter
     private List<Post> posts;
 
-    Thread(String name, Forum forum, Post post){
+    Thread(String name, Forum forum, Post post, User creator){
         this.threadName = requireNonNull(name, "Thread name is mandatory");
         this.forum = requireNonNull(forum, "Thread must be assigned to forum");
+        this.creator = requireNonNull(creator, "Thread creator is required");
         this.posts = new ArrayList<>();
         posts.add(requireNonNull(post, "New thread have to contain one post"));
         post.setThread(this);

@@ -12,7 +12,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @Slf4j
 @RestController
-public class PostController {
+class PostController {
 
     private final RestPostService restPostService;
 
