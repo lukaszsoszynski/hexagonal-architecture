@@ -11,7 +11,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 @Component
 @RequiredArgsConstructor
-public class ModelUserToSoapUserConverter implements Converter<User, com.impaqgroup.training.architecture.hexagonalarchitecture.soap.User> {
+class ModelUserToSoapUserConverter implements Converter<User, com.impaqgroup.training.architecture.hexagonalarchitecture.soap.User> {
 
     private final ConversionService conversionService;
 

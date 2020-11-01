@@ -9,6 +9,9 @@ import org.springframework.stereotype.Component;
 public class ThreadDtoConverter implements Converter<Thread, ThreadDto> {
     @Override
     public ThreadDto convert(Thread thread) {
-        return new ThreadDto(thread.getId(), thread.getThreadName());
+        return new ThreadDto(thread.getId(),
+                thread.getThreadName(),
+                thread.getCreatorEmail(),
+                thread.getForumName());
     }
 }

@@ -58,4 +58,12 @@ public class Thread {
     public void removePost(Long postId) {
         posts.removeIf(post -> post.containSameId(postId));
     }
+
+    public String getCreatorEmail() {
+        return creator.getEmail();
+    }
+
+    public String getForumName() {
+        return forum.getName();
+    }
 }

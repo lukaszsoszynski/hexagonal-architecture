@@ -9,8 +9,6 @@ import static java.util.Objects.requireNonNull;
 @ToString(exclude = "forum")
 public class Post {
 
-//    public static final String POST_SEQUENCE_GENERATOR = "post_sequence_generator";
-
     private Long id;
 
     private String title;
@@ -25,6 +23,13 @@ public class Post {
     @Setter(AccessLevel.PACKAGE)
     private User author;
 
+    private Post(Long id, String title, String content, User user) {
+        this.id = id;
+        this.title = requireNonNull(title, "Title for post is required.");
+        this.content = requireNonNull(content, "Content for post is required.");
+        this.author = user;
+    }
+
     public static Post reconstructExistingPost(Long id, String title, String content) {
         return new Post(requireNonNull(id, "Id is required for post reconstruction"),
                 title,
@@ -34,14 +39,6 @@ public class Post {
 
     public static Post createNewPost(String title, String content, User author) {
         return new Post(null, title, content, author);
-    }
-
-
-    private Post(Long id, String title, String content, User user) {
-        this.id = id;
-        this.title = requireNonNull(title, "Title for post is required.");
-        this.content = requireNonNull(content, "Content for post is required.");
-        this.author = user;
     }
 
     public boolean hasId(Long postId) {
@@ -57,7 +54,15 @@ public class Post {
         return (id != null) && id.equals(requireNonNull(postId, "Post id is null."));
     }
 
-//    public String getForumName(){
-//        return forum.getName();
-//    }
+    public String getAuthorEmail() {
+        return author.getEmail();
+    }
+
+    public Long getThreadId() {
+        return thread.getId();
+    }
+
+    public String getForumName() {
+        return thread.getForumName();
+    }
 }

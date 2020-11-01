@@ -9,7 +9,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import java.time.LocalDateTime;
 
 @Component
-public class LocalDateTimeToXmlGregorianCalendarConverter implements Converter<LocalDateTime, XMLGregorianCalendar> {
+class LocalDateTimeToXmlGregorianCalendarConverter implements Converter<LocalDateTime, XMLGregorianCalendar> {
 
     @Override
     @SneakyThrows

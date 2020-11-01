@@ -13,6 +13,10 @@ public class PostDto {
 
     private String content;
 
+    private String author;
+
+    private Long threadId;
+
     public boolean isUserIdPresent(){
         return postId != null;
     }

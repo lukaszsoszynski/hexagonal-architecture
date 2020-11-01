@@ -7,4 +7,6 @@ public class ThreadDto {
 
     private final Long threadId;
     private final String threadName;
+    private final String creator;
+    private final String forumName;
 }
