@@ -17,7 +17,7 @@ import static java.util.Objects.requireNonNull;
 @OutputPort
 public class ForumModelService implements ForumService {
 
-    private final ForumDao forumRepository;
+    private final ForumDao forumDao;
 
     private final UserDao userDao;
 
@@ -27,42 +27,47 @@ public class ForumModelService implements ForumService {
 
 
     @Override
+    public List<Forum> listAllForums() {
+        return forumDao.findAll();
+    }
+
+    @Override
     public void commenceThread(String forumName, String threadName, Post post) {
-        Forum forum = forumRepository.findForumByName(forumName);
+        Forum forum = forumDao.findForumByName(forumName);
         forum.addThread(threadName, post, currentUserFactor.getLoggedUser());
         notificationSender.sendNotification(postAdded(forumName));
     }
 
     @Override
     public List<Thread> listThreadsInForum(String forumName) {
-        Forum forum = forumRepository.findForumByName(forumName);
+        Forum forum = forumDao.findForumByName(forumName);
         return forum.getThreads();
     }
 
     @Override
     public void create(String forumName, Long threadId, Post post) {
-        Forum forum = forumRepository.findForumByName(forumName);
+        Forum forum = forumDao.findForumByName(forumName);
         forum.appendPostToThread(threadId, post);
         notificationSender.sendNotification(postAdded(forumName));
     }
 
     @Override
     public List<Post> findAll(String forum, Long threadId) {
-        return forumRepository
+        return forumDao
                 .findForumByName(requireNonNull(forum, "Forum name is mandatory"))
                 .getPostsFromThread(requireNonNull(threadId, "Thread id is mandatory"));
     }
 
     @Override
     public void remove(String forumName, Long threadId, Long postId) {
-        Forum forum = forumRepository.findForumByName(forumName);
+        Forum forum = forumDao.findForumByName(forumName);
         forum.remove(threadId, postId);
         notificationSender.sendNotification(postRemoved(forumName));
     }
 
     @Override
     public void update(String forumName, Long threadId, Post post) {
-        Forum forum = forumRepository.findForumByName(requireNonNull(forumName));
+        Forum forum = forumDao.findForumByName(requireNonNull(forumName));
         forum.updatePost(threadId, post);
         notificationSender.sendNotification(postUpdated(forumName));
     }

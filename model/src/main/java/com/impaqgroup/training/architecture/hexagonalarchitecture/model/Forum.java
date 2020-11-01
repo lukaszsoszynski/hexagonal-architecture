@@ -14,6 +14,7 @@ public class Forum {
     @Getter
     private String name;
 
+    @Getter
     private String title;
 
     @Getter
@@ -29,11 +30,6 @@ public class Forum {
 
     public void updatePost(Long threadId, Post updatedPost) {
         getThreadById(threadId).updatePost(updatedPost);
-//        posts
-//                .stream()
-//                .filter(post -> post.hasId(updatedPost.getId()))
-//                .findAny()
-//                .ifPresent(post -> post.update(updatedPost));
     }
 
     public List<Post> getPostsFromThread(Long threadId) {

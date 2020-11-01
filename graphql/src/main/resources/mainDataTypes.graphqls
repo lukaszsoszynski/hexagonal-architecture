@@ -1,0 +1,4 @@
+type SubForum {
+    name : String!
+    title : String!
+}

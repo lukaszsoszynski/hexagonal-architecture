@@ -1,4 +1,4 @@
-package com.impaqgroup.training.architecture.hexagonalarchitecture.restprimaryport;
+package com.impaqgroup.training.architecture.hexagonalarchitecture.restprimaryport.converters;
 
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.CurrentUserFactor;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.Post;
@@ -12,7 +12,7 @@ import static com.impaqgroup.training.architecture.hexagonalarchitecture.model.P
 
 @Component
 @RequiredArgsConstructor
-public class DtoPostConverter implements Converter<PostDto, Post> {
+class DtoPostConverter implements Converter<PostDto, Post> {
 
     private final CurrentUserFactor currentUserFactor;
 

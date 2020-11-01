@@ -8,6 +8,8 @@ import com.impaqgroup.training.architecture.hexagonalarchitecture.repository.jpa
 
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Repository
 class ForumRepositoryToForumDaoSecondaryAdapter implements ForumDao {
@@ -17,6 +19,11 @@ class ForumRepositoryToForumDaoSecondaryAdapter implements ForumDao {
     @Override
     public Forum findForumByName(String forumName){
         return repository.getOne(forumName);
+    }
+
+    @Override
+    public List<Forum> findAll() {
+        return repository.findAll();
     }
 
 }

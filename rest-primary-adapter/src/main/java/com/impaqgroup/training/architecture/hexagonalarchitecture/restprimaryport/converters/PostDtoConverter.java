@@ -1,4 +1,4 @@
-package com.impaqgroup.training.architecture.hexagonalarchitecture.restprimaryport;
+package com.impaqgroup.training.architecture.hexagonalarchitecture.restprimaryport.converters;
 
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.Post;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.rest.dto.PostDto;
@@ -6,7 +6,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PostDtoConverter implements Converter<Post, PostDto> {
+class PostDtoConverter implements Converter<Post, PostDto> {
 
     @Override
     public PostDto convert(Post post) {

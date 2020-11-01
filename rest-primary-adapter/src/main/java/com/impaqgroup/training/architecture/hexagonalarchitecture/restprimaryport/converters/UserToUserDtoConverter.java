@@ -1,4 +1,4 @@
-package com.impaqgroup.training.architecture.hexagonalarchitecture.restprimaryport;
+package com.impaqgroup.training.architecture.hexagonalarchitecture.restprimaryport.converters;
 
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.User;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.rest.dto.UserDto;

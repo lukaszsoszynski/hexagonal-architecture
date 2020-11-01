@@ -5,6 +5,8 @@ import java.util.Optional;
 
 public interface ForumService {
 
+    List<Forum> listAllForums();
+
     void commenceThread(String forumName, String threadName, Post post);
 
     List<Thread> listThreadsInForum(String forumName);

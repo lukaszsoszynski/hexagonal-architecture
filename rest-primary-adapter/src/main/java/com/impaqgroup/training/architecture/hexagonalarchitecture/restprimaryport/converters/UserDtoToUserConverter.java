@@ -1,4 +1,4 @@
-package com.impaqgroup.training.architecture.hexagonalarchitecture.restprimaryport;
+package com.impaqgroup.training.architecture.hexagonalarchitecture.restprimaryport.converters;
 
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.User;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.rest.dto.UserDto;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import static com.impaqgroup.training.architecture.hexagonalarchitecture.model.User.createNewUser;
 
 @Component
-public class UserDtoToUserConverter implements Converter<UserDto, User> {
+class UserDtoToUserConverter implements Converter<UserDto, User> {
     @Override
     public User convert(UserDto userDto) {
         return createNewUser(userDto.getEmail(),

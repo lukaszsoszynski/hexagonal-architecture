@@ -27,6 +27,10 @@
         </dependency>
         <dependency>
             <groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
+            <artifactId>graphql-primary-adapter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.impaqgroup.training.architecture.hexagonal-architecture</groupId>
             <artifactId>repository-secondary-adapter</artifactId>
         </dependency>
         <dependency>
