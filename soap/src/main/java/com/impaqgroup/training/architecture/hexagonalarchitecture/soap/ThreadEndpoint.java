@@ -29,4 +29,5 @@ public class ThreadEndpoint {
         log.info("List all threads in forum '{}'", listAllThreads);
         return soapThreadService.listAllThread(listAllThreads);
     }
+
 }

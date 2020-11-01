@@ -24,6 +24,14 @@
             <xs:element name="name" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
+    <xs:complexType name="User">
+        <xs:attribute name="email" type="xs:string" />
+        <xs:attribute name="firstName" type="xs:string"/>
+        <xs:attribute name="surname" type="xs:string"/>
+        <xs:attribute name="password" type="xs:string"/>
+        <xs:attribute name="dateOfBirth" type="xs:date"/>
+        <xs:attribute name="registrationDate" type="xs:dateTime"/>
+    </xs:complexType>
 
     <xs:element name="getAllPostRequest">
         <xs:complexType>
@@ -70,6 +78,18 @@
         <xs:complexType>
             <xs:sequence maxOccurs="unbounded">
                 <xs:element name="thread" type="tns:Thread" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="findUserByEmail">
+        <xs:complexType>
+            <xs:attribute name="email" type="xs:string" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="findUserByEmailResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="user" type="tns:User" maxOccurs="1" minOccurs="1" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>

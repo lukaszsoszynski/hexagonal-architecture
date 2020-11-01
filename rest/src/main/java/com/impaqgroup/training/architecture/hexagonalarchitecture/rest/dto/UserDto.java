@@ -11,4 +11,5 @@ public class UserDto {
     private String surname;
     private String password;
     private LocalDateTime dateOfBirth;
+    private LocalDateTime registrationDate;
 }

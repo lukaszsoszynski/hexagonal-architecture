@@ -1,6 +1,7 @@
 package com.impaqgroup.training.architecture.hexagonalarchitecture.model;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ForumService {
 
@@ -17,4 +18,6 @@ public interface ForumService {
     void update(String forumName, Long threadId, Post post);
 
     void registerUser(User user);
+
+    Optional<User> findUserByEmail(String email);
 }

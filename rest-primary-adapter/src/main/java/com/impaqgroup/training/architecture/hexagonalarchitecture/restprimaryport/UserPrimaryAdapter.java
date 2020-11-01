@@ -9,6 +9,8 @@ import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class UserPrimaryAdapter implements RestUserService {
@@ -20,5 +22,12 @@ public class UserPrimaryAdapter implements RestUserService {
     @Transactional
     public void createUser(UserDto userDto) {
         forumService.registerUser(conversionService.convert(userDto, User.class));
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<UserDto> findUserByEmail(String email) {
+        return forumService.findUserByEmail(email)
+                .map(user -> conversionService.convert(user, UserDto.class));
     }
 }

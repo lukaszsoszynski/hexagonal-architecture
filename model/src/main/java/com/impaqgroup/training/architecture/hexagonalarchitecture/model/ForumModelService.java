@@ -7,6 +7,7 @@ import com.impaqgroup.training.architecture.hexagonalarchitecture.model.stereoty
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.impaqgroup.training.architecture.hexagonalarchitecture.model.notification.ForumNotification.*;
 import static java.lang.String.format;
@@ -71,6 +72,11 @@ public class ForumModelService implements ForumService {
         String email = user.getEmail();
         userDao.findByEmail(email).ifPresent(this::throwUserAlreadyExists);
         userDao.create(user);
+    }
+
+    @Override
+    public Optional<User> findUserByEmail(String email) {
+        return userDao.findByEmail(requireNonNull(email, "Cannot search for user by null email"));
     }
 
     private void throwUserAlreadyExists(User user){
