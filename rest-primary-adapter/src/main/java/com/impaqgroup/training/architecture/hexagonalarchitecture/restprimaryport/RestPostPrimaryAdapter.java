@@ -3,7 +3,7 @@ package com.impaqgroup.training.architecture.hexagonalarchitecture.restprimarypo
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.Post;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.ForumService;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.rest.RestPostService;
-import com.impaqgroup.training.architecture.hexagonalarchitecture.rest.dto.PostDto;
+import com.impaqgroup.training.architecture.hexagonalarchitecture.rest.dto.RestPostDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
@@ -14,23 +14,23 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class PostPrimaryAdapter implements RestPostService{
+public class RestPostPrimaryAdapter implements RestPostService{
 
     private final ForumService forumService;
 
     private final ConversionService conversionService;
 
     @Transactional
-    public void create(String forum, Long threadId, PostDto postDto) {
+    public void create(String forum, Long threadId, RestPostDto postDto) {
         Post post = conversionService.convert(postDto, Post.class);
         forumService.create(forum, threadId, post);
     }
 
     @Transactional(readOnly = true)
-    public List<PostDto> listPostInForumAndThread(String forum, Long threadId) {
+    public List<RestPostDto> listPostInForumAndThread(String forum, Long threadId) {
         return forumService.findAll(forum, threadId)
                 .stream()
-                .map(post -> conversionService.convert(post, PostDto.class))
+                .map(post -> conversionService.convert(post, RestPostDto.class))
                 .collect(Collectors.toList());
     }
 
@@ -40,7 +40,7 @@ public class PostPrimaryAdapter implements RestPostService{
     }
 
     @Transactional
-    public void update(String forum, Long threadId, PostDto postDto) {
+    public void update(String forum, Long threadId, RestPostDto postDto) {
         Post post = conversionService.convert(postDto, Post.class);
         forumService.update(forum, threadId, post);
     }

@@ -1,11 +1,11 @@
 package com.impaqgroup.training.architecture.hexagonalarchitecture.rest;
 
-import com.impaqgroup.training.architecture.hexagonalarchitecture.rest.dto.UserDto;
+import com.impaqgroup.training.architecture.hexagonalarchitecture.rest.dto.RestUserDto;
 
 import java.util.Optional;
 
 public interface RestUserService {
-    void createUser(UserDto userDto);
+    void createUser(RestUserDto userDto);
 
-    Optional<UserDto> findUserByEmail(String userId);
+    Optional<RestUserDto> findUserByEmail(String userId);
 }

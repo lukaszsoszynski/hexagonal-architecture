@@ -4,7 +4,7 @@ import lombok.Value;
 import lombok.With;
 
 @Value
-public class PostDto {
+public class RestPostDto {
 
     @With
     private Long postId;

@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class UserSoapPrimaryAdapter implements SoapUserService {
+class UserSoapPrimaryAdapter implements SoapUserService {
 
     private final ForumService forumService;
     private final ConversionService conversionService;

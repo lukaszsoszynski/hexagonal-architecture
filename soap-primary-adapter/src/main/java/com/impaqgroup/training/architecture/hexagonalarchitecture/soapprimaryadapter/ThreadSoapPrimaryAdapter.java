@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
-public class ThreadSoapPrimaryAdapter implements SoapThreadService {
+class ThreadSoapPrimaryAdapter implements SoapThreadService {
 
     private final ForumService forumService;
 

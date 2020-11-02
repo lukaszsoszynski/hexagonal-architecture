@@ -12,7 +12,7 @@ import static com.impaqgroup.training.architecture.hexagonalarchitecture.soap.So
 @Endpoint
 @Slf4j
 @RequiredArgsConstructor
-public class ThreadEndpoint {
+class ThreadEndpoint {
 
     private final SoapThreadService soapThreadService;
 

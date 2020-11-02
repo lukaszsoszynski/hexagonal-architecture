@@ -1,6 +1,6 @@
 package com.impaqgroup.training.architecture.hexagonalarchitecture.rest;
 
-import com.impaqgroup.training.architecture.hexagonalarchitecture.rest.dto.PostDto;
+import com.impaqgroup.training.architecture.hexagonalarchitecture.rest.dto.RestPostDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +22,7 @@ class PostController {
     }
 
     @GetMapping(value = "/forums/{forum}/threads/{threadId}/posts", produces = APPLICATION_JSON_VALUE)
-    public List<PostDto> findAll(@PathVariable("forum") String forum, @PathVariable("threadId") Long threadId) {
+    public List<RestPostDto> findAll(@PathVariable("forum") String forum, @PathVariable("threadId") Long threadId) {
         return restPostService.listPostInForumAndThread(forum, threadId);
     }
 
@@ -30,7 +30,7 @@ class PostController {
     @ResponseStatus(HttpStatus.CREATED)
     public void createNew(@PathVariable("forum") String forum,
                           @PathVariable("threadId") Long threadId,
-                          @RequestBody PostDto postDto) {
+                          @RequestBody RestPostDto postDto) {
         restPostService.create(forum, threadId, postDto);
     }
 
@@ -45,7 +45,7 @@ class PostController {
     public void update(@PathVariable("forum") String forum,
                        @PathVariable("threadId") Long threadId,
                        @PathVariable("postId") Long postId,
-                       @RequestBody PostDto postDto) {
+                       @RequestBody RestPostDto postDto) {
         postDto = postDto.withPostId(requireNonNull(postId));
         restPostService.update(forum, threadId, postDto);
     }

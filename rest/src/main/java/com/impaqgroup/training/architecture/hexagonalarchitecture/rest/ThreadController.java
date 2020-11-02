@@ -1,7 +1,7 @@
 package com.impaqgroup.training.architecture.hexagonalarchitecture.rest;
 
-import com.impaqgroup.training.architecture.hexagonalarchitecture.rest.dto.CommenceThreadDto;
-import com.impaqgroup.training.architecture.hexagonalarchitecture.rest.dto.ThreadDto;
+import com.impaqgroup.training.architecture.hexagonalarchitecture.rest.dto.RestCommenceThreadDto;
+import com.impaqgroup.training.architecture.hexagonalarchitecture.rest.dto.RestThreadDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -20,13 +20,13 @@ class ThreadController {
 
     @PostMapping(value = "/forums/{forum}/threads", consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public void commenceThread(@PathVariable("forum") String forum, @RequestBody CommenceThreadDto commenceThreadDto){
+    public void commenceThread(@PathVariable("forum") String forum, @RequestBody RestCommenceThreadDto commenceThreadDto){
         restThreadService.commenceThread(forum, commenceThreadDto);
     }
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(value = "/forums/{forum}/threads", produces = APPLICATION_JSON_VALUE)
-    public List<ThreadDto> listThreadInForum(@PathVariable("forum") String forum){
+    public List<RestThreadDto> listThreadInForum(@PathVariable("forum") String forum){
         return restThreadService.listThreadsInForum(forum);
     }
 

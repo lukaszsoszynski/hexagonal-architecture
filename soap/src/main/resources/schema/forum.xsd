@@ -35,6 +35,12 @@
         <xs:attribute name="dateOfBirth" type="xs:date"/>
         <xs:attribute name="registrationDate" type="xs:dateTime"/>
     </xs:complexType>
+    <xs:complexType name="SubForum">
+        <xs:sequence>
+            <xs:element name="title" type="xs:string" />
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string"/>
+    </xs:complexType>
 
     <xs:element name="getAllPostRequest">
         <xs:complexType>
@@ -93,6 +99,14 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="user" type="tns:User" maxOccurs="1" minOccurs="1" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="listSubForums"/>
+    <xs:element name="listSubForumsResponse">
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="subForum" type="tns:SubForum" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>

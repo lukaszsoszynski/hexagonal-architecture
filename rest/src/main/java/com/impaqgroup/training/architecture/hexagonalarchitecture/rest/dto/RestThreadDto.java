@@ -3,7 +3,7 @@ package com.impaqgroup.training.architecture.hexagonalarchitecture.rest.dto;
 import lombok.Value;
 
 @Value
-public class ThreadDto {
+public class RestThreadDto {
 
     private final Long threadId;
     private final String threadName;

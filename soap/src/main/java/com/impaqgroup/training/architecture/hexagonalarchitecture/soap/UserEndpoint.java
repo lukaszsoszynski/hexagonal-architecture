@@ -13,7 +13,7 @@ import static com.impaqgroup.training.architecture.hexagonalarchitecture.soap.So
 @Slf4j
 @Endpoint
 @RequiredArgsConstructor
-public class UserEndpoint {
+class UserEndpoint {
 
     private final SoapUserService soapUserService;
 

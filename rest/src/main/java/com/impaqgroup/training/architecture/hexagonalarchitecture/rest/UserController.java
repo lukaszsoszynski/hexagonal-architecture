@@ -1,6 +1,6 @@
 package com.impaqgroup.training.architecture.hexagonalarchitecture.rest;
 
-import com.impaqgroup.training.architecture.hexagonalarchitecture.rest.dto.UserDto;
+import com.impaqgroup.training.architecture.hexagonalarchitecture.rest.dto.RestUserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,13 +18,13 @@ class UserController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "/users", consumes = APPLICATION_JSON_VALUE)
-    public void createUser(@RequestBody UserDto userDto) {
+    public void createUser(@RequestBody RestUserDto userDto) {
         restUserService.createUser(userDto);
     }
 
     @ResponseStatus(OK)
     @GetMapping(path = "/users/{userId}", produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity<UserDto> findUserById(@PathVariable("userId") String userId) {
+    public ResponseEntity<RestUserDto> findUserById(@PathVariable("userId") String userId) {
         return restUserService
                 .findUserByEmail(userId)
                 .map(user -> new ResponseEntity<>(user, OK))

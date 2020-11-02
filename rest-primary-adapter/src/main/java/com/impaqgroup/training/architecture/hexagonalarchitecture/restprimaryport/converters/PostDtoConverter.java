@@ -1,15 +1,15 @@
 package com.impaqgroup.training.architecture.hexagonalarchitecture.restprimaryport.converters;
 
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.Post;
-import com.impaqgroup.training.architecture.hexagonalarchitecture.rest.dto.PostDto;
+import com.impaqgroup.training.architecture.hexagonalarchitecture.rest.dto.RestPostDto;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 @Component
-class PostDtoConverter implements Converter<Post, PostDto> {
+class PostDtoConverter implements Converter<Post, RestPostDto> {
 
     @Override
-    public PostDto convert(Post post) {
-        return new PostDto(post.getId(), post.getTitle(), post.getContent(), post.getAuthorEmail(), post.getThreadId());
+    public RestPostDto convert(Post post) {
+        return new RestPostDto(post.getId(), post.getTitle(), post.getContent(), post.getAuthorEmail(), post.getThreadId());
     }
 }

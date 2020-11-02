@@ -2,7 +2,7 @@ package com.impaqgroup.training.architecture.hexagonalarchitecture.restprimarypo
 
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.CurrentUserFactor;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.Post;
-import com.impaqgroup.training.architecture.hexagonalarchitecture.rest.dto.PostDto;
+import com.impaqgroup.training.architecture.hexagonalarchitecture.rest.dto.RestPostDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
@@ -12,12 +12,12 @@ import static com.impaqgroup.training.architecture.hexagonalarchitecture.model.P
 
 @Component
 @RequiredArgsConstructor
-class DtoPostConverter implements Converter<PostDto, Post> {
+class DtoPostConverter implements Converter<RestPostDto, Post> {
 
     private final CurrentUserFactor currentUserFactor;
 
     @Override
-    public Post convert(PostDto postDto) {
+    public Post convert(RestPostDto postDto) {
         return postDto.isUserIdPresent() ?
                 reconstructExistingPost(postDto.getPostId(), postDto.getTitle(), postDto.getContent()) :
                 createNewPost(postDto.getTitle(), postDto.getContent(), currentUserFactor.getLoggedUser());
