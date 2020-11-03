@@ -22,7 +22,7 @@ public class Thread {
     @Setter(AccessLevel.PACKAGE)
     private Forum forum;
 
-    @Getter(AccessLevel.NONE)
+    @Getter
     @Setter(AccessLevel.PACKAGE)
     private User creator;
 

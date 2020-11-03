@@ -7,14 +7,18 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.convert.support.GenericConversionService;
+import org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.persistence.EntityManagerFactory;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -51,4 +55,15 @@ public class HexagonalArchitectureApplication {
 		log.info("Converters registered in conversion service '{}'", converters);
 	}
 
+	@Bean
+	public FilterRegistrationBean<OpenEntityManagerInViewFilter> openEntityManagerInViewFilterFilterRegistrationBean(EntityManagerFactory factory){
+		OpenEntityManagerInViewFilter filter = new OpenEntityManagerInViewFilter(){
+			@Override
+			protected EntityManagerFactory lookupEntityManagerFactory() {
+				logger.info("Getting entity manager factory.");
+				return factory;
+			}
+		};
+		return new FilterRegistrationBean<>(filter);
+	}
 }

@@ -15,11 +15,9 @@ public class Post {
 
     private String content;
 
-    @Getter(AccessLevel.NONE)
     @Setter(AccessLevel.PACKAGE)
     private Thread thread;
 
-    @Getter(AccessLevel.NONE)
     @Setter(AccessLevel.PACKAGE)
     private User author;
 

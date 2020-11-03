@@ -1,4 +1,30 @@
 type SubForum {
     name : String!
     title : String!
+    threads : [Thread!]!
+}
+
+type Thread {
+    threadName : String!
+    threadId : Int!
+    creatorEmail : String!
+    creator : User
+    posts : [Post!]!
+}
+
+type Post {
+    postId : Int!
+    title : String!
+    content : String!
+    authorEmail : String
+    author : User
+}
+
+type User {
+    email : String!
+    firstName : String
+    lastName : String
+    registeredDate : String
+    createdThreads : [Thread!]
+    authorOfPosts : [Post!]
 }
