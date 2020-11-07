@@ -10,7 +10,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class ForumGraphqlResolver implements GraphQLQueryResolver {
+class ForumGraphqlResolver implements GraphQLQueryResolver {
 
     private final GraphForumService graphForumService;
 

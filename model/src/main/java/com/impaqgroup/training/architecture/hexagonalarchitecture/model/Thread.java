@@ -18,7 +18,6 @@ public class Thread {
 
     private String threadName;
 
-    @Getter(AccessLevel.NONE)
     @Setter(AccessLevel.PACKAGE)
     private Forum forum;
 

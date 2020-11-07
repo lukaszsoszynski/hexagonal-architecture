@@ -22,4 +22,6 @@ public interface ForumService {
     void registerUser(User user);
 
     Optional<User> findUserByEmail(String email);
+
+    Optional<Thread> findThread(Long threadId);
 }

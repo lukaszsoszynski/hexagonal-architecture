@@ -10,6 +10,8 @@ type Thread {
     creatorEmail : String!
     creator : User
     posts : [Post!]!
+    recentPosts(numberOfPosts: Int!) : [Post!]!
+    subForum : SubForum!
 }
 
 type Post {

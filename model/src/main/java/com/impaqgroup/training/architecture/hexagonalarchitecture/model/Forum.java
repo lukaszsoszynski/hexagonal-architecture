@@ -38,7 +38,7 @@ public class Forum {
                 .orElse(Collections.emptyList());
     }
 
-    private Optional<Thread> findThreadById(Long threadId) {
+    public Optional<Thread> findThreadById(Long threadId) {
         return threads
                 .stream()
                 .filter(thread -> thread.getId().equals(threadId))

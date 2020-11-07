@@ -84,8 +84,14 @@ public class ForumModelService implements ForumService {
         return userDao.findByEmail(requireNonNull(email, "Cannot search for user by null email"));
     }
 
+    @Override
+    public Optional<Thread> findThread(Long threadId) {
+        return forumDao
+                .findForumByThreadId(threadId)
+                .flatMap(forum -> forum.findThreadById(threadId));
+    }
+
     private void throwUserAlreadyExists(User user){
         throw new ForumException(format("User with email '%s' already exists", user.getEmail()));
     }
-
 }

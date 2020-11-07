@@ -9,6 +9,7 @@ import com.impaqgroup.training.architecture.hexagonalarchitecture.repository.jpa
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Repository
@@ -24,6 +25,11 @@ class ForumRepositoryToForumDaoSecondaryAdapter implements ForumDao {
     @Override
     public List<Forum> findAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public Optional<Forum> findForumByThreadId(Long threadId) {
+        return repository.findByThreadsId(threadId);
     }
 
 }

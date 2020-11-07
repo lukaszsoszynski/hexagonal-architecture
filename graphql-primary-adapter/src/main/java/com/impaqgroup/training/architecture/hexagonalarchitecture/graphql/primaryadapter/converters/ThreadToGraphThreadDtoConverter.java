@@ -1,5 +1,6 @@
 package com.impaqgroup.training.architecture.hexagonalarchitecture.graphql.primaryadapter.converters;
 
+import com.impaqgroup.training.architecture.hexagonalarchitecture.graphql.dto.GraphForumDto;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.graphql.dto.GraphPostDto;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.graphql.dto.GraphThreadDto;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.graphql.dto.GraphUserDto;
@@ -20,6 +21,7 @@ class ThreadToGraphThreadDtoConverter implements Converter<Thread, GraphThreadDt
         return new GraphThreadDto(thread.getId(),
                 thread.getThreadName(),
                 () -> conversionService.convert(thread.getCreator(), GraphUserDto.class),
+                () -> conversionService.convert(thread.getForum(), GraphForumDto.class),
                 thread
                         .getPosts()
                         .stream()

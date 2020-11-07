@@ -1,3 +1,5 @@
 type Query {
     listSubForums : [SubForum!]!
+    findThreadById(threadId : Int!) : Thread
+    findUserByEmail(email : String!) : User
 }
