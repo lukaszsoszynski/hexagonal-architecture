@@ -7,13 +7,15 @@ public interface ForumService {
 
     List<Forum> listAllForums();
 
-    void commenceThread(String forumName, String threadName, Post post);
+    Thread commenceThread(String forumName, String threadName, Post post);
 
     List<Thread> listThreadsInForum(String forumName);
 
     void create(String forumName, Long threadId, Post post);
 
     List<Post> findAll(String forum, Long threadId);
+
+    Optional<Post> findPostById(String forum, Long threadId, Long postId);
 
     void remove(String forumName, Long threadId, Long postId);
 

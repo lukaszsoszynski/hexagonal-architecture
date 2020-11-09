@@ -1,6 +1,7 @@
-package com.impaqgroup.training.architecture.hexagonalarchitecture.graphql;
+package com.impaqgroup.training.architecture.hexagonalarchitecture.graphql.queries;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import com.impaqgroup.training.architecture.hexagonalarchitecture.graphql.GraphForumService;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.graphql.dto.GraphForumDto;
 import graphql.schema.DataFetchingEnvironment;
 import lombok.RequiredArgsConstructor;

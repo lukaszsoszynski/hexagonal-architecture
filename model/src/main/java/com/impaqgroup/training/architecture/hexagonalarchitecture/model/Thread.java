@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static java.util.Objects.requireNonNull;
 
@@ -47,11 +48,15 @@ public class Thread {
     }
 
     private Post getPost(Long postId) {
+        return findPostById(postId)
+                .orElseThrow(() -> new ForumException(String.format("Post with id %d not found.", postId)));
+    }
+
+    public Optional<Post> findPostById(Long postId) {
         return posts
                 .stream()
                 .filter(post -> post.containSameId(postId))
-                .findAny()
-                .orElseThrow(() -> new ForumException(String.format("Post with id %d not found.", postId)));
+                .findAny();
     }
 
     public void removePost(Long postId) {

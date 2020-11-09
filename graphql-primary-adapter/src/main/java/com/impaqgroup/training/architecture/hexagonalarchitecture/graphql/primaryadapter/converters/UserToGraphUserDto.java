@@ -20,8 +20,8 @@ class UserToGraphUserDto implements Converter<User, GraphUserDto> {
         return new GraphUserDto(user.getEmail(),
                 user.getFirstName(),
                 user.getLastName(),
-                conversionService.convert(user.getRegisteredDate(), String.class),
-                conversionService.convert(user.getDateOfBirth(), String.class),
+                user.getRegisteredDate(),
+                user.getDateOfBirth(),
                 user.getCreatedThreads().stream().map(thread -> conversionService.convert(thread, GraphThreadDto.class)),
                 user.getAuthorOfPosts().stream().map(post -> conversionService.convert(post, GraphPostDto.class)));
     }

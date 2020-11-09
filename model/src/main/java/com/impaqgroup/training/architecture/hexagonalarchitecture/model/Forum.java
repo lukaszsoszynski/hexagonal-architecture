@@ -20,8 +20,10 @@ public class Forum {
     @Getter
     private List<Thread> threads;
 
-    public void addThread(String threadName, Post post, User user) {
-        threads.add(new Thread(threadName, this, post, user));
+    public Thread addThread(String threadName, Post post, User user) {
+        Thread thread = new Thread(threadName, this, post, user);
+        threads.add(thread);
+        return thread;
     }
 
     public void remove(Long threadId, Long postId) {
@@ -32,7 +34,7 @@ public class Forum {
         getThreadById(threadId).updatePost(updatedPost);
     }
 
-    public List<Post> getPostsFromThread(Long threadId) {
+    public List<Post> findPostsFromThread(Long threadId) {
         return findThreadById(threadId)
                 .map(Thread::getPosts)
                 .orElse(Collections.emptyList());
@@ -52,5 +54,9 @@ public class Forum {
 
     public void appendPostToThread(Long threadId, Post post) {
         getThreadById(threadId).appendPost(post);
+    }
+
+    public Optional<Post> findPostsFromThread(Long threadId, Long postId) {
+        return findThreadById(threadId).flatMap(thread -> thread.findPostById(postId));
     }
 }

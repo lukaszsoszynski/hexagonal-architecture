@@ -26,7 +26,15 @@ type User {
     email : String!
     firstName : String
     lastName : String
-    registeredDate : String
+    registeredDate(formatter : GraphDataTimeFormatter! = ISO) : String
+    dateOfBirth(formatter : GraphDataTimeFormatter! = ISO) : String
     createdThreads : [Thread!]
     authorOfPosts : [Post!]
+}
+
+enum GraphDataTimeFormatter {
+    ISO
+    DATE
+    TIME
+    DAYS_TILL_NOW
 }

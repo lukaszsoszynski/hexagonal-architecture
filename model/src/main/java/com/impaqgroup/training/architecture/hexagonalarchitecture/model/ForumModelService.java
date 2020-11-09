@@ -32,10 +32,11 @@ public class ForumModelService implements ForumService {
     }
 
     @Override
-    public void commenceThread(String forumName, String threadName, Post post) {
+    public Thread commenceThread(String forumName, String threadName, Post post) {
         Forum forum = forumDao.findForumByName(forumName);
-        forum.addThread(threadName, post, currentUserFactor.getLoggedUser());
+        Thread thread = forum.addThread(threadName, post, currentUserFactor.getLoggedUser());
         notificationSender.sendNotification(postAdded(forumName));
+        return thread;
     }
 
     @Override
@@ -55,7 +56,15 @@ public class ForumModelService implements ForumService {
     public List<Post> findAll(String forum, Long threadId) {
         return forumDao
                 .findForumByName(requireNonNull(forum, "Forum name is mandatory"))
-                .getPostsFromThread(requireNonNull(threadId, "Thread id is mandatory"));
+                .findPostsFromThread(requireNonNull(threadId, "Thread id is mandatory"));
+    }
+
+    @Override
+    public Optional<Post> findPostById(String forum, Long threadId, Long postId) {
+        return forumDao
+                .findForumByName(requireNonNull(forum, "Forum name is mandatory"))
+                .findPostsFromThread(threadId, postId);
+
     }
 
     @Override

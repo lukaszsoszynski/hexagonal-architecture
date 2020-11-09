@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Value;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -14,8 +15,10 @@ public class GraphUserDto {
     private String email;
     private String firstName;
     private String lastName;
-    private String registeredDate;
-    private String dateOfBirth;
+    @Getter(AccessLevel.NONE)
+    private LocalDateTime registeredDate;
+    @Getter(AccessLevel.NONE)
+    private LocalDateTime dateOfBirth;
     @Getter(AccessLevel.NONE)
     private Stream<GraphThreadDto> createdThreads;
     @Getter(AccessLevel.NONE)
@@ -27,5 +30,13 @@ public class GraphUserDto {
 
     public List<GraphPostDto> getAuthorOfPosts(){
         return authorOfPosts.collect(toList());
+    }
+
+    public String registeredDate(GraphDataTimeFormatter format){
+        return format.format(registeredDate);
+    }
+
+    public String dateOfBirth(GraphDataTimeFormatter format){
+        return format.format(dateOfBirth);
     }
 }

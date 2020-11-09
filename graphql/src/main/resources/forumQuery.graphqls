@@ -1,5 +1,6 @@
 type Query {
     listSubForums : [SubForum!]!
     findThreadById(threadId : Int!) : Thread
+    findPostById(forumName : String!, threadId : Int!, postId : Int!) : Post
     findUserByEmail(email : String!) : User
 }

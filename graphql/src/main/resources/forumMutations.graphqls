@@ -1,0 +1,27 @@
+type Mutation {
+    commenceThread(commanceThreadRequest : CommenceThreadRequest!) : Thread!
+    registerUser(registerUserRequest : RegisterUserRequest) : User!
+    createNewPost(createNewPostRequest : CreateNewPostRequest) : Post!
+}
+
+input CommenceThreadRequest {
+    forumName : String!
+    threadName : String!
+    postTitle : String!
+    postContent :  String!
+}
+
+input RegisterUserRequest {
+    email : String!
+    firstName : String
+    surname : String
+    password : String!
+    dateOfBirth : String
+}
+
+input CreateNewPostRequest {
+    forumName : String!
+    threadId : Int!
+    title : String!
+    content :  String!
+}
