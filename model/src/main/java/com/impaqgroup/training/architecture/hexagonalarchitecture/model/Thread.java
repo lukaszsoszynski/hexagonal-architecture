@@ -43,8 +43,10 @@ public class Thread {
         post.setThread(this);
     }
 
-    public void updatePost(Post updatedPost) {
-        getPost(requireNonNull(updatedPost, "Cannot update null post").getId()).update(updatedPost);
+    public Post updatePost(Post updatedPost) {
+        Post post = getPost(requireNonNull(updatedPost, "Cannot update null post").getId());
+        post.update(updatedPost);
+        return post;
     }
 
     private Post getPost(Long postId) {

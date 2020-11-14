@@ -75,10 +75,11 @@ public class ForumModelService implements ForumService {
     }
 
     @Override
-    public void update(String forumName, Long threadId, Post post) {
+    public Post update(String forumName, Long threadId, Post post) {
         Forum forum = forumDao.findForumByName(requireNonNull(forumName));
-        forum.updatePost(threadId, post);
+        Post updatePost = forum.updatePost(threadId, post);
         notificationSender.sendNotification(postUpdated(forumName));
+        return updatePost;
     }
 
     @Override

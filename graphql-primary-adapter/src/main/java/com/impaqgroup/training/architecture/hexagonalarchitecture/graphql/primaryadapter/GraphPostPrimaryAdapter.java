@@ -3,6 +3,7 @@ package com.impaqgroup.training.architecture.hexagonalarchitecture.graphql.prima
 import com.impaqgroup.training.architecture.hexagonalarchitecture.graphql.GraphPostService;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.graphql.dto.GraphCreateNewPostRequest;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.graphql.dto.GraphPostDto;
+import com.impaqgroup.training.architecture.hexagonalarchitecture.graphql.dto.GraphUpdatePostRequest;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.ForumModelService;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.Post;
 import lombok.RequiredArgsConstructor;
@@ -34,5 +35,13 @@ class GraphPostPrimaryAdapter implements GraphPostService {
         Post post = conversionService.convert(request, Post.class);
         forumModelService.create(request.getForumName(), request.getThreadId(), post);
         return () -> conversionService.convert(post, GraphPostDto.class);
+    }
+
+    @Override
+    @Transactional
+    public Supplier<GraphPostDto> updatePost(GraphUpdatePostRequest updatePostRequest) {
+        Post post = conversionService.convert(updatePostRequest, Post.class);
+        Post updatedPost = forumModelService.update(updatePostRequest.getForumName(), updatePostRequest.getThreadId(), post);
+        return () -> conversionService.convert(updatedPost, GraphPostDto.class);
     }
 }

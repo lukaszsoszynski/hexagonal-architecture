@@ -19,7 +19,7 @@ public interface ForumService {
 
     void remove(String forumName, Long threadId, Long postId);
 
-    void update(String forumName, Long threadId, Post post);
+    Post update(String forumName, Long threadId, Post post);
 
     void registerUser(User user);
 

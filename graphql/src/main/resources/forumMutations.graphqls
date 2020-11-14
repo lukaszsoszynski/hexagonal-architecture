@@ -2,6 +2,7 @@ type Mutation {
     commenceThread(commanceThreadRequest : CommenceThreadRequest!) : Thread!
     registerUser(registerUserRequest : RegisterUserRequest) : User!
     createNewPost(createNewPostRequest : CreateNewPostRequest) : Post!
+    updatePost(updatePostRequest : UpdatePostRequest) : Post!
 }
 
 input CommenceThreadRequest {
@@ -24,4 +25,12 @@ input CreateNewPostRequest {
     threadId : Int!
     title : String!
     content :  String!
+}
+
+input UpdatePostRequest {
+    forumName : String!
+    threadId : Int!
+    postId : Int!
+    title : String
+    content :  String
 }

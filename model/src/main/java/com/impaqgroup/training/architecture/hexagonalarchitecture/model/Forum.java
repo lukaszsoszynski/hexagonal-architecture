@@ -30,8 +30,8 @@ public class Forum {
             getThreadById(threadId).removePost(postId);
     }
 
-    public void updatePost(Long threadId, Post updatedPost) {
-        getThreadById(threadId).updatePost(updatedPost);
+    public Post updatePost(Long threadId, Post updatedPost) {
+        return getThreadById(threadId).updatePost(updatedPost);
     }
 
     public List<Post> findPostsFromThread(Long threadId) {
