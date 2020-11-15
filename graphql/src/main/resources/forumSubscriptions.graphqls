@@ -1,3 +1,10 @@
 type Subscription {
-    newPostInThread(forumName : String! threadId : Int!) : Post!
+    newPostInThread(forumName : String! threadId : Int!) : PostNotification!
+}
+
+type PostNotification {
+    forumName : String!
+    threadId : Int!
+    title : String
+    action : String!
 }

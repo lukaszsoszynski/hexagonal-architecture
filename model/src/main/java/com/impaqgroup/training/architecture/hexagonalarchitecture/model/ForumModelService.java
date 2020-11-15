@@ -1,6 +1,5 @@
 package com.impaqgroup.training.architecture.hexagonalarchitecture.model;
 
-import com.impaqgroup.training.architecture.hexagonalarchitecture.model.notification.NotificationSender;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.repository.ForumDao;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.repository.UserDao;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.stereotype.OutputPort;
@@ -35,7 +34,7 @@ public class ForumModelService implements ForumService {
     public Thread commenceThread(String forumName, String threadName, Post post) {
         Forum forum = forumDao.findForumByName(forumName);
         Thread thread = forum.addThread(threadName, post, currentUserFactor.getLoggedUser());
-        notificationSender.sendNotification(postAdded(forumName));
+        notificationSender.sendNotification(threadCommenced(forumName, threadName));
         return thread;
     }
 
@@ -49,7 +48,7 @@ public class ForumModelService implements ForumService {
     public void create(String forumName, Long threadId, Post post) {
         Forum forum = forumDao.findForumByName(forumName);
         forum.appendPostToThread(threadId, post);
-        notificationSender.sendNotification(postAdded(forumName));
+        notificationSender.sendNotification(postAdded(forumName, threadId, post.getTitle()));
     }
 
     @Override
@@ -71,14 +70,14 @@ public class ForumModelService implements ForumService {
     public void remove(String forumName, Long threadId, Long postId) {
         Forum forum = forumDao.findForumByName(forumName);
         forum.remove(threadId, postId);
-        notificationSender.sendNotification(postRemoved(forumName));
+        notificationSender.sendNotification(postRemoved(forumName, threadId));
     }
 
     @Override
     public Post update(String forumName, Long threadId, Post post) {
         Forum forum = forumDao.findForumByName(requireNonNull(forumName));
         Post updatePost = forum.updatePost(threadId, post);
-        notificationSender.sendNotification(postUpdated(forumName));
+        notificationSender.sendNotification(postUpdated(forumName, threadId, post.getTitle()));
         return updatePost;
     }
 

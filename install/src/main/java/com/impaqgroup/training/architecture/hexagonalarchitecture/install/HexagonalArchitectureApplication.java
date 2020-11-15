@@ -1,6 +1,7 @@
 package com.impaqgroup.training.architecture.hexagonalarchitecture.install;
 
 import com.impaqgroup.training.architecture.hexagonalarchitecture.install.security.SecurityConfig;
+import com.impaqgroup.training.architecture.hexagonalarchitecture.model.stereotype.Brick;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.stereotype.OutputPort;
 import com.impaqgroup.training.architecture.hexagonalarchitecture.repository.jpa.RepositoryConfiguration;
 import lombok.RequiredArgsConstructor;
@@ -31,7 +32,8 @@ import static org.springframework.context.annotation.FilterType.ANNOTATION;
 		useDefaultFilters = false,
 		includeFilters = {
 				@Filter(type = ANNOTATION, classes = Component.class),
-				@Filter(type = ANNOTATION, classes = OutputPort.class)
+				@Filter(type = ANNOTATION, classes = OutputPort.class),
+				@Filter(type = ANNOTATION, classes = Brick.class)
 		})
 @Import({RepositoryConfiguration.class, SecurityConfig.class})
 @RequiredArgsConstructor

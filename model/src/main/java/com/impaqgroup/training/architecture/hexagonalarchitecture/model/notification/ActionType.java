@@ -1,5 +1,15 @@
 package com.impaqgroup.training.architecture.hexagonalarchitecture.model.notification;
 
 public enum ActionType {
-    POST_ADDED, POST_UPDATED, POST_REMOVED;
+    POST_ADDED(true), POST_UPDATED(true), POST_REMOVED(true), THREAD_COMMENCED(false);
+
+    private final boolean relatedToPost;
+
+    ActionType(boolean relatedToPost) {
+        this.relatedToPost = relatedToPost;
+    }
+
+    public boolean isRelatedToPost() {
+        return relatedToPost;
+    }
 }

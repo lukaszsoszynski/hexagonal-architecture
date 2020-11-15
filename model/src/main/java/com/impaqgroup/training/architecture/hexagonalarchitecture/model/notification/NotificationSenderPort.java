@@ -3,7 +3,7 @@ package com.impaqgroup.training.architecture.hexagonalarchitecture.model.notific
 import com.impaqgroup.training.architecture.hexagonalarchitecture.model.stereotype.InputPort;
 
 @InputPort
-public interface NotificationSender {
+public interface NotificationSenderPort {
 
     void sendNotification(ForumNotification notification);
 }
