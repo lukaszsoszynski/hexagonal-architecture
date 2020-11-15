@@ -1,6 +1,7 @@
 package com.impaqgroup.training.architecture.hexagonalarchitecture.graphql.dto;
 
 import lombok.Getter;
+import lombok.ToString;
 import lombok.Value;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public class GraphThreadDto {
     private final Supplier<GraphForumDto>  subForum;
 
     @Getter(NONE)
+    @ToString.Exclude
     private Stream<GraphPostDto> posts;
 
     public String getCreatorEmail(){

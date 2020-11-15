@@ -2,6 +2,7 @@ package com.impaqgroup.training.architecture.hexagonalarchitecture.graphql.dto;
 
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.ToString;
 import lombok.Value;
 
 import java.time.LocalDateTime;
@@ -11,6 +12,7 @@ import java.util.stream.Stream;
 import static java.util.stream.Collectors.toList;
 
 @Value
+@ToString
 public class GraphUserDto {
     private String email;
     private String firstName;
@@ -20,8 +22,10 @@ public class GraphUserDto {
     @Getter(AccessLevel.NONE)
     private LocalDateTime dateOfBirth;
     @Getter(AccessLevel.NONE)
+    @ToString.Exclude
     private Stream<GraphThreadDto> createdThreads;
     @Getter(AccessLevel.NONE)
+    @ToString.Exclude
     private Stream<GraphPostDto> authorOfPosts;
 
     public List<GraphThreadDto> getCreatedThreads(){

@@ -11,6 +11,7 @@ public class GraphForumDto {
     private String name;
     private String title;
     @Getter(AccessLevel.NONE)
+    @ToString.Exclude
     private Stream<GraphThreadDto> threads;
 
     public List<GraphThreadDto> getThreads(){
