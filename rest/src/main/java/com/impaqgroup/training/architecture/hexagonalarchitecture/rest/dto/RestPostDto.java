@@ -1,5 +1,6 @@
 package com.impaqgroup.training.architecture.hexagonalarchitecture.rest.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Value;
 import lombok.With;
 
@@ -17,6 +18,7 @@ public class RestPostDto {
 
     private Long threadId;
 
+    @JsonIgnore
     public boolean isUserIdPresent(){
         return postId != null;
     }

@@ -14,6 +14,7 @@ class FindPostByIdResolver implements GraphQLQueryResolver {
     private final GraphPostService graphPostService;
 
     public GraphPostDto findPostById(String forumName, Long threadId, Long postId, DataFetchingEnvironment environment) {
+        //DataFetchingEnvironment can be omitted
         return graphPostService.findPostById(forumName, threadId, postId).orElse(null);
     }
 }
